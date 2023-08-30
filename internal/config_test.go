@@ -1,4 +1,4 @@
-package tfa
+package internal
 
 import (
 	// "fmt"

@@ -1,4 +1,4 @@
-package tfa
+package internal
 
 import (
 	"bytes"
@@ -13,7 +13,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/thomseddon/go-flags"
 	"github.com/thomseddon/traefik-forward-auth/internal/provider"
 )
 

@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/jamowei/traefik-forward-auth/internal"
 	"net/http"
-
-	internal "github.com/thomseddon/traefik-forward-auth/internal"
 )
 
 // Main
