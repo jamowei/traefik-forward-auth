@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/jamowei/traefik-forward-auth/internal/provider"
+	"github.com/stretchr/testify/assert"
 )
 
 /**
@@ -278,6 +278,13 @@ func TestAuthMakeCookie(t *testing.T) {
 	c = MakeCookie(r, "test@example.com")
 	assert.Equal("testname", c.Name)
 	assert.False(c.Secure)
+
+	config.CookieName = "testname"
+	config.InsecureCookie = true
+	config.SameSiteCookie = 3
+	c = MakeCookie(r, "test@example.com")
+	assert.Equal("testname", c.Name)
+	assert.Equal(http.SameSiteStrictMode, c.SameSite)
 }
 
 func TestAuthMakeCSRFCookie(t *testing.T) {
@@ -303,6 +310,13 @@ func TestAuthMakeCSRFCookie(t *testing.T) {
 	c = MakeCSRFCookie(r, "12333378901234567890123456789012")
 	assert.Equal("_forward_auth_csrf_123333", c.Name)
 	assert.Equal("example.com", c.Domain)
+
+	config.CookieName = "testname"
+	config.InsecureCookie = true
+	config.SameSiteCookie = 3
+	c = MakeCookie(r, "test@example.com")
+	assert.Equal("testname", c.Name)
+	assert.Equal(http.SameSiteStrictMode, c.SameSite)
 }
 
 func TestAuthClearCSRFCookie(t *testing.T) {

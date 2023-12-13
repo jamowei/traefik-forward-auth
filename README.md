@@ -154,6 +154,7 @@ Application Options:
   --config=                                             Path to config file [$CONFIG]
   --cookie-domain=                                      Domain to set auth cookie on, can be set multiple times [$COOKIE_DOMAIN]
   --insecure-cookie                                     Use insecure cookies [$INSECURE_COOKIE]
+  --same-site-cookie                                    Set SameSite cookie property (1: Default, 2: Lax, 3: Strict, 4: None)
   --cookie-name=                                        Cookie Name (default: _forward_auth) [$COOKIE_NAME]
   --csrf-cookie-name=                                   CSRF Cookie Name (default: _forward_auth_csrf) [$CSRF_COOKIE_NAME]
   --default-action=[auth|allow]                         Default action (default: auth) [$DEFAULT_ACTION]
@@ -242,6 +243,10 @@ All options can be supplied in any of the following ways, in the following prece
 - `insecure-cookie`
 
    If you are not using HTTPS between the client and traefik, you will need to pass the `insecure-cookie` option which will mean the `Secure` attribute on the cookie will not be set.
+
+- `same-site-cookie`
+
+   A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` (same-site-cookie=4) and `Secure` (insecure-cookie=false). You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032
 
 - `cookie-name`
 
