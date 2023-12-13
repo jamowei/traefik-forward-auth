@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/thomseddon/traefik-forward-auth/internal/provider"
+	"github.com/jamowei/traefik-forward-auth/internal/provider"
 )
 
 var config *Config
