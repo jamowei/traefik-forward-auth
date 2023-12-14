@@ -224,6 +224,7 @@ func ClearCSRFCookie(r *http.Request, c *http.Cookie) *http.Cookie {
 		Domain:   csrfCookieDomain(r),
 		HttpOnly: true,
 		Secure:   !config.InsecureCookie,
+		SameSite: http.SameSite(config.SameSiteCookie),
 		Expires:  time.Now().Local().Add(time.Hour * -1),
 	}
 }
